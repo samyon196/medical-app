@@ -1,7 +1,7 @@
 <template>
 <div style="overflow-y: scroll; height: 500px;">
   <div v-for="(force, idx) in forces" :key="idx" @click="forceClicked(idx)">
-      <Force v-bind:name="force.name" v-bind:type="force.type" v-bind:event="force.event" />
+      <Force card v-bind:name="force.name" v-bind:type="force.type" v-bind:event="force.event" />
   </div>
 </div>
 </template>
