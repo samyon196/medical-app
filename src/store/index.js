@@ -5,7 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    forces: [],
+    forces: [
+                  {name:'אמבולנס 879', type:'מד"א', event:"תאונת דרכים צומת תפוח"},
+                  {name:'פלוגת הראל', type:'669'},
+                  {name:'גדוד 33', type:'תאג"ד', event:"שריפה בארמון הנציב"},
+                  {name:'גדוד 30', type:'תאג"ד'},
+                  {name:'מ"פ גולן', type:'מג"ב'}
+              ],
     events: [],
     hotspots: []
   },
@@ -30,6 +36,28 @@ export default new Vuex.Store({
     updateHotspots(context, hotspots) {
       context.commit('SET_HOTSPOTS', hotspots);
     }
+  },
+  getters: {
+    getForces(state) {
+      return state.forces;
+    },
+    getSortedForces(state) {
+      function compare(a, b) {
+        if (a.event && !b.event)
+            return 1;
+        if (b.event && !a.event)
+            return -1;
+        return 0;
+        }
+
+        return state.forces.concat().sort(compare);
+    },
+    getEvents(state) {
+      return state.events;
+    },
+    getHotspots(state) {
+      return state.hotspots;
+    },
   },
   modules: {
   }
