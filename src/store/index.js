@@ -17,7 +17,8 @@ export default new Vuex.Store({
                   {id: 9, lat: 31.424611, lon: 35.924567, name:'גדוד 70', type:'תאג"ד'},
                   {id: 10, lat: 31.624611, lon: 34.897001, name:'גדוד 80', type:'תאג"ד'},
               ],
-    events: [],
+    events: [
+      {id:1, timestamp:"10/3/20 22:10:43", name:"פיגוע בארמון הנציב", isOpen:true ,lat:31.10 ,long:10.56, type:'פיגוע דקירה', numOfParticipants:5, description:'abc'},    ],
     hotspots: []
   },
   mutations: {
