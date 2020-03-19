@@ -6,11 +6,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     forces: [
-                  {name:'אמבולנס 879', type:'מד"א', event:"תאונת דרכים צומת תפוח"},
+                  {name:'אמבולנס 879', type:'מד"א', event:"תאונת דרכים צומת תפוח", lat: 31.924611, lon: 34.897001},
                   {name:'פלוגת הראל', type:'669'},
                   {name:'גדוד 33', type:'תאג"ד', event:"שריפה בארמון הנציב"},
                   {name:'גדוד 30', type:'תאג"ד'},
-                  {name:'מ"פ גולן', type:'מג"ב'}
+                  {name:'מ"פ גולן', type:'מג"ב'},
+                  {name:'גדוד 40', type:'תאג"ד'},
+                  {name:'גדוד 50', type:'תאג"ד'},
+                  {name:'גדוד 60', type:'תאג"ד'},
+                  {name:'גדוד 70', type:'תאג"ד'},
+                  {name:'גדוד 80', type:'תאג"ד'},
               ],
     events: [],
     hotspots: []

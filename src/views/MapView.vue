@@ -4,10 +4,10 @@
     <v-container>
       <v-layout row>
         <v-flex md3>
-          <ForcesList @force-clicked="forceClicked" />
+          <ForcesList :forces="forcesInVicinity" @force-clicked="forceClicked" />
         </v-flex>
         <v-flex md9>
-            <Map />
+            <Map @boundsUpdated="boundsUpdated" />
         </v-flex>
       </v-layout> 
     </v-container>
@@ -22,7 +22,8 @@ export default {
   data: function() {
     return {
       id: 0,
-      forces: this.$store.getters.getSortedForces
+      forces: this.$store.getters.getSortedForces,
+      bounds: {_southWest: { "lat": 29.420468051108937, "lng": 30.245324243473096}, _northEast: { "lat": 33.678647217642336, "lng": 40.0121699465981}},
     }
   },
   methods: {
@@ -30,8 +31,19 @@ export default {
       //this.$store.getters.getForces
       console.log('Force with id ' + id + ' was clicked');
       this.id = id;
+    },
+    boundsUpdated(bounds) {
+      this.bounds = bounds;
     }
   },
+  computed: {
+    forcesInVicinity() {
+      return this.forces.filter(force => (force.lat >= this.bounds._southWest.lat 
+                          && force.lat <= this.bounds._northEast.lat
+                          && force.lon >= this.bounds._southWest.lng
+                          && force.lon <= this.bounds._northEast.lng));
+      }
+  }
 }
 </script>
 

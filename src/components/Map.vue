@@ -45,6 +45,7 @@ export default {
     },
     boundsUpdated (bounds) {
       this.bounds = bounds;
+      this.$emit('boundsUpdated', bounds);
     }
   }
 }
