@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Map from '../views/Map.vue'
+import MapView from '../views/MapView.vue'
 import Forces from '../views/Forces'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/', name: 'Map', component: Map},
+  {path: '/', name: 'Map', component: MapView},
   {path: '/forces', name: 'Forces', component: Forces}
 ]
 
