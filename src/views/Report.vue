@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="400"
+    max-width="700"
   >
     <v-img
       class="white--text align-end"
@@ -14,23 +14,30 @@
     <v-card-subtitle class="pb-0">Report</v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <v-text-field required label="Name" v-model="name" ></v-text-field>
-      <v-text-field required label="Detailed description" v-model="description"></v-text-field>
-      <v-text-field required label="Latitude" v-model="lat"></v-text-field>
-      <v-text-field required label="Longitude" v-model="lon"></v-text-field>
-      <br />
-      <v-slider
+      <v-container>
+      <v-layout row>
+        <v-flex md6 style="padding: 10px;">
+          <v-text-field required label="Name" v-model="name" ></v-text-field>
+          <v-text-field required label="Detailed description" v-model="description"></v-text-field>
+          <v-text-field required label="Latitude" v-model="lat"></v-text-field>
+        </v-flex>
+        <v-flex md6 style="padding: 10px;">
+          <v-text-field required label="Longitude" v-model="lon"></v-text-field>
+      <v-select
+          :items="items"
+          label="Type"
+          v-model="eventType"
+        ></v-select><br />
+        <v-slider
         label="Number of participants"
           min="1"
           max="50"
           v-model="slider"
           thumb-label="always"
         ></v-slider>
-      <v-select
-          :items="items"
-          label="Standard"
-          v-model="eventType"
-        ></v-select>
+        </v-flex>
+      </v-layout> 
+    </v-container>
     </v-card-text>
 
     <v-card-actions>
@@ -62,7 +69,7 @@ export default {
     methods: {
         sendReport() {
             //this.$socket.emit('channelName', payload);
-            console.log([this.eventType, this.name, this.description, this.lat, this.lon, this.vslider])
+            console.log([this.eventType, this.name, this.description, this.lat, this.lon, this.slider])
         }
     }
 }
