@@ -13,10 +13,18 @@
         </v-list-item>
         <v-list-item link router :to="{name: 'Forces'}" exact>
           <v-list-item-action>
-            <v-icon>mdi-compass</v-icon>
+            <v-icon>mdi-format-list-bulleted</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Forces</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link router :to="{name: 'Report'}" exact>
+          <v-list-item-action>
+            <v-icon>mdi-application-export</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Report</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
