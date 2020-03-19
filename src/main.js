@@ -4,7 +4,10 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import 'leaflet/dist/leaflet.css';
+import VueSocketIO from 'vue-socket.io';
 
+
+//Vue.use(new VueSocketIO({connection: 'http://localhost:7654'}));
 Vue.config.productionTip = false
 
 new Vue({
