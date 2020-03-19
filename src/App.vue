@@ -21,6 +21,11 @@
       </v-list>
     </v-navigation-drawer>
 
+    <v-app-bar app clipped-left>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+        <v-toolbar-title>RF Chat App</v-toolbar-title>
+    </v-app-bar>
+
     <v-content class="grey lighten-4">
         <v-container fluid>
             <router-view></router-view>
