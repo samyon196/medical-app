@@ -1,6 +1,7 @@
 <template>
     <div>
         Hello, forces list.
+        5 + 5 = 8
     </div>
 </template>
 
