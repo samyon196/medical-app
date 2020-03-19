@@ -21,8 +21,10 @@
         :lat-lng="[item.lat, item.long]"
         :radius="2"
         color="red"
-    />
-
+    >
+    <l-popup><Event v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants"/></l-popup>
+    </l-circle-marker>
+    
     <l-circle-marker v-for="(item, index) in hotArray" 
         :key="index"
         :lat-lng="item.center"
@@ -45,6 +47,7 @@
 <script>
 import {LMap, LTileLayer, LCircle, LCircleMarker, LPopup} from 'vue2-leaflet';
 import Force from './Force'
+import Event from './Event'
 export default {
   components: {
     LMap,
@@ -52,7 +55,8 @@ export default {
     LCircle,
     LCircleMarker,
     LPopup,
-    Force
+    Force,
+    Event
   },
   props: {
       events: [], 

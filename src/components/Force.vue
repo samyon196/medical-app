@@ -7,7 +7,7 @@
     hover
     outlined
   >
-    <v-list-item three-line>
+    <v-list-item>
       <v-list-item-content>
         <v-list-item-text v-if="this.event" style="color:red">באירוע</v-list-item-text>
         <v-list-item-text v-else style="color:green">פנוי</v-list-item-text>
@@ -18,7 +18,7 @@
     </v-list-item>
   </v-card>
   <div v-else>
-    <v-list-item three-line>
+    <v-list-item>
       <v-list-item-content>
         <v-list-item-text v-if="this.event" style="color:red">באירוע</v-list-item-text>
         <v-list-item-text v-else style="color:green">פנוי</v-list-item-text>
