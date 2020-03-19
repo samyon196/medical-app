@@ -23,7 +23,7 @@
         color="red"
     />
 
-    <l-circle v-for="(item, index) in hotArray" 
+    <l-circle-marker v-for="(item, index) in hotArray" 
         :key="index"
         :lat-lng="item.center"
         :radius="item.radius"
@@ -104,22 +104,22 @@ export default {
        hotArray: [
         {
             center: [31.124611, 34.897001],
-            radius: 10000,
+            radius: 2,
             color: 'orange'
         },
         {
             center: [31.424611, 35.924567],
-            radius:10000,
+            radius:2,
             color: 'orange'
         },
         {
             center: [31.624611, 35.124567],
-            radius:10000,
+            radius:2,
             color: 'orange'
         },
         {
             center: [ 31.253093, 34.988673],
-            radius: 10000,
+            radius: 2,
             color: 'orange'
         }
       ]
