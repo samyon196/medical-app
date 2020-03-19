@@ -1,5 +1,6 @@
 <template>
 <v-app class="grey lighten-4">
+    <Socket />
     <v-navigation-drawer app clipped v-model="drawer" class="grey lighten-3">
         <v-list dense>
         <v-list-item link router :to="{name: 'Map'}" exact>
@@ -35,10 +36,11 @@
 </template>
 
 <script>
+import Socket from './components/workers/Socket'
 export default {
   name: 'App',
 
-  components: {},
+  components: {Socket},
 
   data: () => ({
     drawer: true
