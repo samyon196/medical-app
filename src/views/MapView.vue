@@ -9,10 +9,10 @@
         </v-flex>
         <v-flex md2>
           <h2 style="margin-right:30px" dir="rtl">אירועים</h2>
-          <EventsList :events="eventsInVicinity" @events-clicked="eventClicked" />
+          <EventsList :events="eventsInVicinity" @event-clicked="eventClicked" />
         </v-flex>
         <v-flex md8>
-            <Map :current-popup="id" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
+            <Map :events-flipper="eventsFlipper" :current-events-popup="eventsId" :forces-flipper="forcesFlipper" :current-forces-popup="forcesId" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
 
         </v-flex>
       </v-layout> 
@@ -28,8 +28,10 @@ export default {
   components: {Map, ForcesList, EventsList},
   data: function() {
     return {
-      flipper: true,
-      id: 0,
+      forcesFlipper: true,
+      eventsFlipper: true,
+      forcesId: 0,
+      eventsId: 0,
       forces: this.$store.getters.getForces,
       sortedForces: this.$store.getters.getSortedForces,
       events: this.$store.getters.getEvents,
@@ -41,8 +43,14 @@ export default {
     forceClicked(id) {
       //this.$store.getters.getForces
       console.log('Force with id ' + id + ' was clicked');
-      this.flipper = !this.flipper;
-      this.id = id;
+      this.forcesFlipper = !this.forcesFlipper;
+      this.forcesId = id;
+    },
+    eventClicked(id) {
+      //this.$store.getters.getForces
+      console.log('Force with id ' + id + ' was clicked');
+      this.eventsFlipper = !this.eventsFlipper;
+      this.eventsId = id;
     },
     boundsUpdated(bounds) {
       this.bounds = bounds;

@@ -1,5 +1,5 @@
 <template>
-<div class="hide-scroll" style="overflow-y: auto; height: 500px; ">
+<div class="hide-scroll" style="overflow-y: auto; height: 500px;">
   <div v-for="(force, idx) in forces" :key="idx" @click="forceClicked(force.id)">
       <Force card v-bind:name="force.name" v-bind:type="force.type" v-bind:event="force.event" />
   </div>
