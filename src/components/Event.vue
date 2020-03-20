@@ -21,7 +21,7 @@
   <div v-else>
     <v-list-item>
       <v-list-item-content>
-        <v-list-item-text v-if=this.handlingForces.length > 0" class="subtitle-1"><span style="color:green">בטיפול: </span> <span v-for="(force, idx) in handlingForces" :key="idx">{{force}}<span v-if="idx != handlingForces.length - 1">, </span></span></v-list-item-text>
+        <v-list-item-text v-if="this.handlingForces.length > 0" class="subtitle-1"><span style="color:green">בטיפול: </span> <span v-for="(force, idx) in handlingForces" :key="idx">{{force}}<span v-if="idx != handlingForces.length - 1">, </span></span></v-list-item-text>
         <v-list-item-text v-else class="subtitle-1"><span style="color:red">לא בטיפול</span> </v-list-item-text>
         <v-list-item-title class="title mb-1">{{name}}</v-list-item-title>
         <v-list-item-subtitle>מספר משתתפים: {{numOfParticipants}}</v-list-item-subtitle>

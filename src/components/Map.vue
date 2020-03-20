@@ -1,11 +1,6 @@
 <template>
 
   <div style="height: 350px;">
-    <div class="info" style="height: 15%">
-      <span>Center: {{ center }}</span>
-      <span>Zoom: {{ zoom }}</span>
-      <span>Bounds: {{ bounds }}</span>
-    </div>
     <l-map
       ref="myMap"
       style="height: 130%; width: 100%"

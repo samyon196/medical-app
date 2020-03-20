@@ -11,6 +11,7 @@
           <EventsList :events="eventsInVicinity" @event-clicked="eventClicked" />
         </v-flex>
         <v-flex md8>
+            <h2 style="margin-right:30px" dir="rtl">מפה</h2>
             <Map :events-flipper="eventsFlipper" :current-events-popup="eventsId" :forces-flipper="forcesFlipper" :current-forces-popup="forcesId" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
 
         </v-flex>
