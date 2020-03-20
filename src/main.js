@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import VueSocketIO from 'vue-socket.io';
 
 
-//Vue.use(new VueSocketIO({connection: 'http://localhost:7654'}));
+Vue.use(new VueSocketIO({connection: 'http://localhost:8080'}));
 Vue.config.productionTip = false
 
 new Vue({

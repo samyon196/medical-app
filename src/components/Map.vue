@@ -27,7 +27,7 @@
     </l-circle-marker>
     
     <l-circle-marker v-for="(item, index) in hotArray" 
-        :key="index"
+        :key="index+10000"
         :lat-lng="item.center"
         :radius="item.radius"
         color="orange"
@@ -35,7 +35,7 @@
 
     <l-circle-marker v-for="(item, index) in forces"
         ref="forces" 
-        :key="index"
+        :key="index+20000"
         :lat-lng="[item.lat, item.long]"
         :radius="2"
         color="blue"
@@ -71,15 +71,17 @@ export default {
   watch: {
     forcesFlipper(newVal, oldVal) {
       console.log('Prop changed to ' + this.currentForcesPopup);
+      let idx = this.forces.findIndex(force => force.id == this.currentForcesPopup);
       //this.$refs.forces[oldVal-1].mapObject.closePopup();
-      this.center = [this.forces[this.currentForcesPopup-1].lat, this.forces[this.currentForcesPopup-1].long];
-      this.$refs.forces[this.currentForcesPopup-1].mapObject.openPopup();
+      this.center = [this.forces[idx].lat, this.forces[idx].long];
+      this.$refs.forces[idx].mapObject.openPopup();
     },
     eventsFlipper(newVal, oldVal) {
       console.log('Prop changed to ' + this.currentEventsPopup);
+      let idx = this.events.findIndex(event => event.id == this.currentEventsPopup);
       //this.$refs.forces[oldVal-1].mapObject.closePopup();
-      this.center = [this.events[this.currentEventsPopup-1].lat, this.events[this.currentEventsPopup-1].long];
-      this.$refs.events[this.currentEventsPopup-1].mapObject.openPopup();
+      this.center = [this.events[idx].lat, this.events[idx].long];
+      this.$refs.events[idx].mapObject.openPopup();
     },
   },
   data () {

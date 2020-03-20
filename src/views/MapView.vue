@@ -1,6 +1,5 @@
 <template>
     <div>
-    id is {{id}}, {{forces.find(force => force.id == id)}}
     <v-container>
       <v-layout row>
         <v-flex md2>
@@ -32,10 +31,6 @@ export default {
       eventsFlipper: true,
       forcesId: 0,
       eventsId: 0,
-      forces: this.$store.getters.getForces,
-      sortedForces: this.$store.getters.getSortedForces,
-      events: this.$store.getters.getEvents,
-      sortedEvents: this.$store.getters.getSortedEvents,
       bounds: {_southWest: { "lat": 29.420468051108937, "lng": 30.245324243473096}, _northEast: { "lat": 33.678647217642336, "lng": 40.0121699465981}},
     }
   },
@@ -57,6 +52,10 @@ export default {
     }
   },
   computed: {
+    forces() {return this.$store.getters.getForces;},
+    sortedForces() {return this.$store.getters.getSortedForces;},
+    events() {return this.$store.getters.getEvents;},
+    sortedEvents() {return this.$store.getters.getSortedEvents;},
     forcesInVicinity() {
       return this.sortedForces.filter(force => (force.lat >= this.bounds._southWest.lat 
                           && force.lat <= this.bounds._northEast.lat
