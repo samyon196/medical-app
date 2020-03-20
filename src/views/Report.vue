@@ -68,8 +68,8 @@ export default {
     },
     methods: {
         sendReport() {
-            //this.$socket.emit('channelName', payload);
-            console.log([this.eventType, this.name, this.description, this.lat, this.lon, this.slider])
+            this.$socket.emit('new_event', JSON.stringify({timestamp: "13:05:20, 13.5.20", name: this.name, latitude: this.lat, longitude: this.lon, type_id: this.eventType, num_participants: this.slider, description: this.description}));
+            //console.log([this.eventType, this.name, this.description, this.lat, this.lon, this.slider])
         }
     }
 }
