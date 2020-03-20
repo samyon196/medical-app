@@ -28,6 +28,11 @@
         <v-list-item-subtitle>סוג האירוע: {{type}}</v-list-item-subtitle>
         <v-list-item-subtitle >זמן: {{timestamp}}</v-list-item-subtitle>
         <v-list-item-text class="subtitle-1">תיאור: {{description}}</v-list-item-text>
+        <div class="text-center">
+        <v-btn class="mx-2" fab dark small color="red" @click="deleteClicked">
+            <v-icon dark>mdi-delete</v-icon>
+        </v-btn>
+        </div>
       </v-list-item-content>
     </v-list-item>
   </div>
@@ -46,7 +51,12 @@ export default {
             numOfParticipants: Number, 
             description: String,
             handlingForces: Array
-        }
+        },
+        methods: {
+            deleteClicked() {
+                console.log(this.id + "was deleted");
+            }
+        },
 }
 </script>
 

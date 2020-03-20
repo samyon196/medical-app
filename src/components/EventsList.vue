@@ -1,7 +1,7 @@
 <template>
 <div class="hide-scroll" style="overflow-y: auto; height: 500px;">
   <div v-for="(event, idx) in events" :key="idx" @click="eventClicked(event.id)">
-      <Event card v-bind:name="event.name" v-bind:type="event.type" v-bind:timestamp="event.timestamp" v-bind:description="event.description" v-bind:num-of-participants="event.numOfParticipants" v-bind:handling-forces="event.handlingForces"/>
+      <Event card v-bind:id="event.id" v-bind:name="event.name" v-bind:type="event.type" v-bind:timestamp="event.timestamp" v-bind:description="event.description" v-bind:num-of-participants="event.numOfParticipants" v-bind:handling-forces="event.handlingForces"/>
   </div>
 </div>
 </template>
