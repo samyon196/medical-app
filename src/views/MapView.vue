@@ -3,10 +3,15 @@
     id is {{id}}, {{forces.find(force => force.id == id)}}
     <v-container>
       <v-layout row>
-        <v-flex md3>
+        <v-flex md2>
+          <h2 style="margin-right:30px" dir="rtl">כוחות</h2>
           <ForcesList :forces="forcesInVicinity" @force-clicked="forceClicked" />
         </v-flex>
-        <v-flex md9>
+        <v-flex md2>
+          <h2 style="margin-right:30px" dir="rtl">אירועים</h2>
+          <EventsList :events="eventsInVicinity" @events-clicked="eventClicked" />
+        </v-flex>
+        <v-flex md8>
             <Map :current-popup="id" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
         </v-flex>
       </v-layout> 
@@ -17,14 +22,16 @@
 <script>
 import Map from './../components/Map'
 import ForcesList from './../components/ForcesList'
+import EventsList from './../components/EventsList'
 export default {
-  components: {Map, ForcesList},
+  components: {Map, ForcesList, EventsList},
   data: function() {
     return {
       id: 0,
       forces: this.$store.getters.getForces,
       sortedForces: this.$store.getters.getSortedForces,
       events: this.$store.getters.getEvents,
+      sortedEvents: this.$store.getters.getSortedEvents,
       bounds: {_southWest: { "lat": 29.420468051108937, "lng": 30.245324243473096}, _northEast: { "lat": 33.678647217642336, "lng": 40.0121699465981}},
     }
   },
@@ -44,6 +51,12 @@ export default {
                           && force.lat <= this.bounds._northEast.lat
                           && force.long >= this.bounds._southWest.lng
                           && force.long <= this.bounds._northEast.lng));
+      },
+    eventsInVicinity() {
+      return this.sortedEvents.filter(event => (event.lat >= this.bounds._southWest.lat 
+                          && event.lat <= this.bounds._northEast.lat
+                          && event.long >= this.bounds._southWest.lng
+                          && event.long <= this.bounds._northEast.lng));
       }
   }
 }

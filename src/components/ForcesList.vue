@@ -1,5 +1,5 @@
 <template>
-<div style="overflow-y: scroll; height: 500px;">
+<div class="hide-scroll" style="overflow-y: auto; height: 500px; ">
   <div v-for="(force, idx) in forces" :key="idx" @click="forceClicked(force.id)">
       <Force card v-bind:name="force.name" v-bind:type="force.type" v-bind:event="force.event" />
   </div>
@@ -26,5 +26,8 @@ export default {
 </script>
 
 <style>
-
+.hide-scroll::-webkit-scrollbar{
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 </style>
