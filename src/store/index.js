@@ -60,6 +60,17 @@ export default new Vuex.Store({
 
         return state.forces.concat().sort(compare);
     },
+    getSortedEvents(state) {
+      function compare(a, b) {
+        if (a.handlingForces && !b.handlingForces)
+            return 1;
+        if (b.handlingForces && !a.handlingForces)
+            return -1;
+        return 0;
+        }
+
+        return state.events.concat().sort(compare);
+    },
     getEvents(state) {
       return state.events;
     },

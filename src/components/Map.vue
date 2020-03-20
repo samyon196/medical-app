@@ -16,13 +16,14 @@
     >
 
       <l-tile-layer :url="url"></l-tile-layer>
-    <l-circle-marker v-for="(item, index) in events" 
+    <l-circle-marker v-for="(item, index) in events"
+        ref="events"
         :key="index"
         :lat-lng="[item.lat, item.long]"
         :radius="2"
         color="red"
     >
-    <l-popup><Event v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants" v-bind:handling-forces="item.handlingForces"/></l-popup>
+    <l-popup :options="{ keepInView: false, autoPan: false }"><Event v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants" v-bind:handling-forces="item.handlingForces"/></l-popup>
     </l-circle-marker>
     
     <l-circle-marker v-for="(item, index) in hotArray" 
@@ -62,17 +63,24 @@ export default {
   props: {
       events: Array, 
       forces: Array,
-      currentPopup: Number,
-      flipper: Boolean
+      currentForcesPopup: Number,
+      currentEventsPopup: Number,
+      forcesFlipper: Boolean,
+      eventsFlipper: Boolean
   },
   watch: {
-    flipper(newVal, oldVal) {
-      console.log('Prop changed to ' + this.currentPopup);
+    forcesFlipper(newVal, oldVal) {
+      console.log('Prop changed to ' + this.currentForcesPopup);
       //this.$refs.forces[oldVal-1].mapObject.closePopup();
-      this.center = [this.forces[this.currentPopup-1].lat, this.forces[this.currentPopup-1].long];
-      this.$refs.forces[this.currentPopup-1].mapObject.openPopup();
-      
-    }
+      this.center = [this.forces[this.currentForcesPopup-1].lat, this.forces[this.currentForcesPopup-1].long];
+      this.$refs.forces[this.currentForcesPopup-1].mapObject.openPopup();
+    },
+    eventsFlipper(newVal, oldVal) {
+      console.log('Prop changed to ' + this.currentEventsPopup);
+      //this.$refs.forces[oldVal-1].mapObject.closePopup();
+      this.center = [this.events[this.currentEventsPopup-1].lat, this.events[this.currentEventsPopup-1].long];
+      this.$refs.events[this.currentEventsPopup-1].mapObject.openPopup();
+    },
   },
   data () {
     return {
