@@ -8,28 +8,28 @@
       height="200px"
       src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
     >
-      <v-card-title>Report a new event</v-card-title>
+      <v-card-title dir="rtl">דווח על אירוע חדש</v-card-title>
     </v-img>
 
-    <v-card-subtitle class="pb-0">Report</v-card-subtitle>
+    <v-card-subtitle dir="rtl" class="pb-0">דיווח</v-card-subtitle>
 
     <v-card-text class="text--primary">
       <v-container>
       <v-layout row>
-        <v-flex md6 style="padding: 10px;">
-          <v-text-field required label="Name" v-model="name" ></v-text-field>
-          <v-text-field required label="Detailed description" v-model="description"></v-text-field>
-          <v-text-field required label="Latitude" v-model="lat"></v-text-field>
+        <v-flex dir="rtl" md6 style="padding: 10px;">
+          <v-text-field dir="rtl" required label="כותרת" v-model="name" ></v-text-field>
+          <v-text-field dir="rtl" required label="פירוט" v-model="description"></v-text-field>
+          <v-text-field dir="rtl" required label="Latitude" v-model="lat"></v-text-field>
         </v-flex>
         <v-flex md6 style="padding: 10px;">
-          <v-text-field required label="Longitude" v-model="lon"></v-text-field>
+          <v-text-field dir="rtl" required label="Longitude" v-model="lon"></v-text-field>
       <v-select
           :items="items"
-          label="Type"
+          label="סוג האירוע"
           v-model="eventType"
         ></v-select><br />
-        <v-slider
-        label="Number of participants"
+        <v-slider dir="rtl"
+        label="מספר משתתפים"
           min="1"
           max="50"
           v-model="slider"
@@ -40,9 +40,9 @@
     </v-container>
     </v-card-text>
 
-    <v-card-actions>
+    <v-card-actions dir="rtl">
       <v-btn color="green" @click="sendReport">
-        Send report
+        שלח דיווח
       </v-btn>
     </v-card-actions>
   </v-card>

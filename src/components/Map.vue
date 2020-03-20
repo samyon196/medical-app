@@ -22,7 +22,7 @@
         :radius="2"
         color="red"
     >
-    <l-popup><Event v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants"/></l-popup>
+    <l-popup><Event v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants" v-bind:handling-forces="item.handlingForces"/></l-popup>
     </l-circle-marker>
     
     <l-circle-marker v-for="(item, index) in hotArray" 
