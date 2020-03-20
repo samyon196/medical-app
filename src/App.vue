@@ -37,7 +37,9 @@
 
     <v-content class="grey lighten-4">
         <v-container fluid>
-            <router-view></router-view>
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
         </v-container>
     </v-content>
 </v-app>
