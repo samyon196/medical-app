@@ -1,13 +1,13 @@
 <template>
     <div>
-    id is {{id}}, {{forces[id].name}}
+    id is {{id}}, {{forces.find(force => force.id == id)}}
     <v-container>
       <v-layout row>
         <v-flex md3>
           <ForcesList :forces="forcesInVicinity" @force-clicked="forceClicked" />
         </v-flex>
         <v-flex md9>
-            <Map :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
+            <Map :current-popup="id" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
         </v-flex>
       </v-layout> 
     </v-container>
@@ -22,7 +22,8 @@ export default {
   data: function() {
     return {
       id: 0,
-      forces: this.$store.getters.getSortedForces,
+      forces: this.$store.getters.getForces,
+      sortedForces: this.$store.getters.getSortedForces,
       events: this.$store.getters.getEvents,
       bounds: {_southWest: { "lat": 29.420468051108937, "lng": 30.245324243473096}, _northEast: { "lat": 33.678647217642336, "lng": 40.0121699465981}},
     }
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     forcesInVicinity() {
-      return this.forces.filter(force => (force.lat >= this.bounds._southWest.lat 
+      return this.sortedForces.filter(force => (force.lat >= this.bounds._southWest.lat 
                           && force.lat <= this.bounds._northEast.lat
                           && force.long >= this.bounds._southWest.lng
                           && force.long <= this.bounds._northEast.lng));

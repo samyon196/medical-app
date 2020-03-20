@@ -32,13 +32,14 @@
         color="orange"
     />
 
-    <l-circle-marker v-for="(item, index) in forces" 
+    <l-circle-marker v-for="(item, index) in forces"
+        ref="forces" 
         :key="index"
         :lat-lng="[item.lat, item.long]"
         :radius="2"
         color="blue"
     >
-    <l-popup><Force v-bind:name="item.name" v-bind:type="item.type" v-bind:event="item.event" /></l-popup>
+    <l-popup :options="{ keepInView: false, autoPan: false }"><Force v-bind:name="item.name" v-bind:type="item.type" v-bind:event="item.event" /></l-popup>
     </l-circle-marker>
     </l-map>
   </div>
@@ -59,8 +60,18 @@ export default {
     Event
   },
   props: {
-      events: [], 
-      forces: [],
+      events: Array, 
+      forces: Array,
+      currentPopup: Number
+  },
+  watch: {
+    currentPopup(newVal, oldVal) {
+      console.log('Prop changed to ' + newVal);
+      //this.$refs.forces[oldVal-1].mapObject.closePopup();
+      this.center = [this.forces[newVal-1].lat, this.forces[newVal-1].long];
+      this.$refs.forces[newVal-1].mapObject.openPopup();
+      
+    }
   },
   data () {
     return {
