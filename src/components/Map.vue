@@ -7,6 +7,7 @@
       <span>Bounds: {{ bounds }}</span>
     </div>
     <l-map
+      ref="myMap"
       style="height: 130%; width: 100%"
       :zoom="zoom"
       :center="center"
@@ -23,7 +24,7 @@
         :radius="2"
         color="red"
     >
-    <l-popup :options="{ keepInView: false, autoPan: false }"><Event v-bind:id="item.id" v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants" v-bind:handling-forces="item.handlingForces"/></l-popup>
+    <l-popup :options="{ keepInView: false, autoPan: false }"><Event @hello="clearPopup" v-bind:id="item.id" v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants" v-bind:handling-forces="item.handlingForces"/></l-popup>
     </l-circle-marker>
     
     <l-circle-marker v-for="(item, index) in hotArray" 
@@ -79,10 +80,14 @@ export default {
     eventsFlipper(newVal, oldVal) {
       console.log('Prop changed to ' + this.currentEventsPopup);
       let idx = this.events.findIndex(event => event.id == this.currentEventsPopup);
-      //this.$refs.forces[oldVal-1].mapObject.closePopup();
       this.center = [this.events[idx].lat, this.events[idx].long];
       this.$refs.events[idx].mapObject.openPopup();
     },
+    clearPopup() {
+      //let idx = this.events.findIndex(event => event.id == this.currentEventsPopup);
+      //this.$refs.myMap.closePopup();
+      console.log('popup cleared');
+    }
   },
   data () {
     return {
