@@ -22,9 +22,9 @@
     <l-popup :options="{ keepInView: false, autoPan: false }"><Event @delete-event="clearPopup(item.id)" v-bind:id="item.id" v-bind:name="item.name" v-bind:type="item.type" v-bind:timestamp="item.timestamp" v-bind:description="item.description" v-bind:num-of-participants="item.numOfParticipants" v-bind:handling-forces="item.handlingForces"/></l-popup>
     </l-circle-marker>
     
-    <l-circle-marker v-for="(item, index) in hotArray" 
+    <l-circle-marker v-for="(item, index) in hotspots" 
         :key="index+10000"
-        :lat-lng="item.center"
+        :lat-lng="[item.lat, item.long]"
         :radius="item.radius"
         color="orange"
     />
@@ -59,6 +59,7 @@ export default {
   props: {
       events: Array, 
       forces: Array,
+      hotspots: Array,
       currentForcesPopup: Number,
       currentEventsPopup: Number,
       forcesFlipper: Boolean,

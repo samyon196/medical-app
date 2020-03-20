@@ -48,8 +48,13 @@ export default {
             this.$store.dispatch('updateEvents', events);
         },
         update_hotspots(hotspots) {
-            //console.log('Got hotspots list from server' + hotspots);
-            this.$store.dispatch('updateHotspots', hotspots);
+            console.log('Got hotspots list from server' + hotspots);
+            hotspots = JSON.parse(hotspots);
+            for(let hotspot of hotspots) {
+                hotspot.radius = hotspot.radius*1000;
+            }
+            console.log('dispateced update hot');
+            //this.$store.dispatch('updateHotspots', hotspots);
         },
     }
 }

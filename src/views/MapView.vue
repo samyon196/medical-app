@@ -12,7 +12,7 @@
         </v-flex>
         <v-flex md8>
             <h2 style="margin-right:30px" dir="rtl">מפה</h2>
-            <Map :events-flipper="eventsFlipper" :current-events-popup="eventsId" :forces-flipper="forcesFlipper" :current-forces-popup="forcesId" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
+            <Map :events-flipper="eventsFlipper" :current-events-popup="eventsId" :hotspots="this.hotspots" :forces-flipper="forcesFlipper" :current-forces-popup="forcesId" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
 
         </v-flex>
       </v-layout> 
@@ -56,6 +56,7 @@ export default {
     forces() {return this.$store.getters.getForces;},
     sortedForces() {return this.$store.getters.getSortedForces;},
     events() {return this.$store.getters.getEvents;},
+    hotspots() {return this.$store.getters.getHotspots;},
     sortedEvents() {return this.$store.getters.getSortedEvents;},
     forcesInVicinity() {
       return this.sortedForces.filter(force => (force.lat >= this.bounds._southWest.lat 
