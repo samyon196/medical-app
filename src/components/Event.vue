@@ -55,7 +55,7 @@ export default {
         methods: {
             deleteClicked() {
                 console.log(this.id + "was deleted");
-                this.$emit('hello');
+                this.$emit('delete-event');
             }
         },
 }
