@@ -62,9 +62,9 @@ export default new Vuex.Store({
     },
     getSortedEvents(state) {
       function compare(a, b) {
-        if (a.handlingForces && !b.handlingForces)
+        if (a.handlingForces.length > 0  && !(b.handlingForces.length>0))
             return 1;
-        if (b.handlingForces && !a.handlingForces)
+        if (b.handlingForces.length > 0 && !(a.handlingForces.length >0))
             return -1;
         return 0;
         }
