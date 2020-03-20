@@ -62,14 +62,15 @@ export default {
   props: {
       events: Array, 
       forces: Array,
-      currentPopup: Number
+      currentPopup: Number,
+      flipper: Boolean
   },
   watch: {
-    currentPopup(newVal, oldVal) {
-      console.log('Prop changed to ' + newVal);
+    flipper(newVal, oldVal) {
+      console.log('Prop changed to ' + this.currentPopup);
       //this.$refs.forces[oldVal-1].mapObject.closePopup();
-      this.center = [this.forces[newVal-1].lat, this.forces[newVal-1].long];
-      this.$refs.forces[newVal-1].mapObject.openPopup();
+      this.center = [this.forces[this.currentPopup-1].lat, this.forces[this.currentPopup-1].long];
+      this.$refs.forces[this.currentPopup-1].mapObject.openPopup();
       
     }
   },
