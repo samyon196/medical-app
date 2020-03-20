@@ -7,7 +7,7 @@
           <ForcesList :forces="forcesInVicinity" @force-clicked="forceClicked" />
         </v-flex>
         <v-flex md9>
-            <Map :current-popup="id" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
+            <Map :flipper="flipper" :current-popup="id" :forces="this.forces" :events="this.events" @boundsUpdated="boundsUpdated" />
         </v-flex>
       </v-layout> 
     </v-container>
@@ -21,6 +21,7 @@ export default {
   components: {Map, ForcesList},
   data: function() {
     return {
+      flipper: true,
       id: 0,
       forces: this.$store.getters.getForces,
       sortedForces: this.$store.getters.getSortedForces,
@@ -32,6 +33,7 @@ export default {
     forceClicked(id) {
       //this.$store.getters.getForces
       console.log('Force with id ' + id + ' was clicked');
+      this.flipper = !this.flipper;
       this.id = id;
     },
     boundsUpdated(bounds) {
