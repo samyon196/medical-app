@@ -5,6 +5,11 @@
 npm install
 ```
 
+## UPDATE BABEL!!!!
+```
+npm update --depth 5 @babel/compat-data
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
